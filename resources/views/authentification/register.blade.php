@@ -45,10 +45,10 @@
                                             <input type="file" name="photo" class="form-control" accept="image/*" required>
                                         </div>
 
-                                        <!-- Rôle (Affiche Utilisateur) -->
+                                        <!-- Rôle -->
                                         <div class="col-md-6">
                                             <label class="form-label fw-semibold">Rôle *</label>
-                                            <select name="role" class="form-select" disabled>
+                                            <select name="role" class="form-select" required>
                                                 <option value="Utilisateur" selected>Utilisateur</option>
                                                 <option value="Administrateur">Administrateur</option>
                                             </select>

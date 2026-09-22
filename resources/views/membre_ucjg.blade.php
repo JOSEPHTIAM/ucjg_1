@@ -251,6 +251,13 @@
                                         <input type="file" class="form-control" name="photo" accept="image/*">
                                     </div>
                                     <div class="col-md-4">
+                                        <label class="form-label fw-semibold">Rôle</label>
+                                        <select class="form-select" name="role" required>
+                                            <option value="Utilisateur" {{ auth()->user()->role === 'Utilisateur' ? 'selected' : '' }}>Utilisateur</option>
+                                            <option value="Administrateur" {{ auth()->user()->role === 'Administrateur' ? 'selected' : '' }}>Administrateur</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-4">
                                         <label class="form-label fw-semibold">Nom</label>
                                         <input type="text" class="form-control" name="nom" value="{{ auth()->user()->nom }}" required>
                                     </div>

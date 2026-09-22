@@ -230,6 +230,7 @@ document.addEventListener('DOMContentLoaded', function () {
             }
 
             const fields = {
+                role: this.dataset.userRole || 'Utilisateur',
                 nom: this.dataset.userName || '',
                 prenom: this.dataset.userPrenom || '',
                 membre: this.dataset.userMembre || 'Nouveau',

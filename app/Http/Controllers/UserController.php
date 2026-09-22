@@ -22,6 +22,7 @@ class UserController extends Controller
     {
         $request->validate([
             'photo' => 'required|image|mimes:jpeg,png,jpg|max:2048',
+            'role' => 'required|in:Utilisateur,Administrateur',
             'nom' => 'required|string|max:255',
             'prenom' => 'nullable|string|max:255',
             'membre' => 'required|in:Ancien,Nouveau,Partenaire',
@@ -46,7 +47,7 @@ class UserController extends Controller
 
         $user = User::create([
             'photo' => $photoPath,
-            'role' => 'Utilisateur',
+            'role' => $request->role,
             'nom' => $request->nom,
             'prenom' => $request->prenom,
             'membre' => $request->membre,
@@ -139,6 +140,7 @@ class UserController extends Controller
 
         $validated = $request->validate([
             'photo' => ['nullable', 'image', 'mimes:jpeg,png,jpg', 'max:2048'],
+            'role' => ['required', 'in:Utilisateur,Administrateur'],
             'nom' => ['required', 'string', 'max:255'],
             'prenom' => ['nullable', 'string', 'max:255'],
             'membre' => ['required', 'in:Ancien,Nouveau,Partenaire'],
