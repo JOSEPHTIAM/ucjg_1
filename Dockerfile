@@ -1,36 +1,29 @@
-FROM php:8.2-fpm
+FROM php:8.2-cli
 
-# Installation des dépendances système et des extensions PHP (incluant PostgreSQL)
+# Installation des dépendances et de l'extension pdo_pgsql pour PostgreSQL
 RUN apt-get update && apt-get install -y \
-    nginx \
-    libpng-dev \
-    libonig-dev \
-    libxml2-dev \
     libpq-dev \
     zip \
     unzip \
     git \
-    curl
-
-RUN docker-php-ext-install pdo pdo_pgsql pgsql mbstring exif pcntl bcmath gd
+    curl \
+    && docker-php-ext-install pdo pdo_pgsql
 
 # Installation de Composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
-# Copie du code de l'application
 WORKDIR /var/www
+
+# Copie des fichiers du projet
 COPY . .
 
-# Installation des dépendances Composer
+# Installation des dépendances Laravel
 RUN composer install --no-dev --optimize-autoloader
 
-# Configuration des permissions
+# Permissions
 RUN chown -R www-data:www-data /var/www/storage /var/www/bootstrap/cache
 
-# Configuration Nginx
-COPY .render/nginx.conf /etc/nginx/sites-available/default
+EXPOSE 10000
 
-EXPOSE 80
-
-# Commande de démarrage
-CMD php artisan migrate --force && php artisan storage:link && php artisan config:cache && php artisan route:cache && service nginx start && php-fpm
+# Commande de démarrage avec le serveur intégré de Laravel
+CMD php artisan migrate --force && php artisan storage:link && php artisan config:cache && php artisan route:cache && php artisan serve --host 0.0.0.0 --port $PORT
