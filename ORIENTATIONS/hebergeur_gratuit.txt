@@ -1,0 +1,13 @@
+Hébergeur gratuit :
+
+1. Hébergeur gratuit avec un minimum de 20 jours d'essai
+Voici le meilleur choix répondant à ce critère :
+
+Scalingo (Plateforme Cloud basée en France) :
+
+Période offerte : 30 jours d'essai gratuit (30 days free trial) sans carte de crédit requise.
+
+Compatibilité : Support natif de PHP et de Laravel.
+
+Lien : scalingo.com
+

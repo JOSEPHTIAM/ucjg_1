@@ -1,0 +1,652 @@
+:root {
+    --ucjg-blue: #0D3B66;
+    --ucjg-gold: #DAA520;
+    --ucjg-light-gold: #FFF9E6;
+    --ucjg-white: #FFFFFF;
+    --ucjg-bg-light: #F8F9FA;
+    --ucjg-dark-text: #2B2D42;
+    --ucjg-red: #ae1212;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    color: var(--ucjg-dark-text);
+    background-color: var(--ucjg-bg-light);
+    overflow-x: hidden;
+}
+
+/* NAVBAR */
+.navbar-custom {
+    background-color: var(--ucjg-white);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    padding: 12px 0;
+}
+
+.navbar-brand img {
+    max-height: 50px;
+    width: auto;
+}
+
+.navbar-brand-text {
+    color: var(--ucjg-blue);
+    font-weight: 700;
+    font-size: 1.1rem;
+    line-height: 1.2;
+}
+
+.navbar-brand-subtext {
+    color: var(--ucjg-gold);
+    font-size: 0.78rem;
+    font-weight: 500;
+}
+
+.nav-link {
+    color: var(--ucjg-blue) !important;
+    font-weight: 500;
+    margin: 0 5px;
+    transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+    color: var(--ucjg-gold) !important;
+}
+
+.btn-ucjg-gold {
+    background-color: var(--ucjg-gold);
+    color: var(--ucjg-white);
+    font-weight: 600;
+    border-radius: 25px;
+    padding: 8px 22px;
+    border: none;
+    transition: all 0.3s ease;
+}
+
+.btn-ucjg-gold:hover {
+    background-color: #c4931a;
+    color: var(--ucjg-white);
+}
+
+/* SLIDER / HERO */
+.hero-section_retraite {
+    background: linear-gradient(135deg, rgba(13, 59, 102, 0.92), rgba(13, 59, 102, 0.85)), 
+                url("/ucjg_sodikoville.jpg") center/cover no-repeat;
+    color: var(--ucjg-white);
+    padding: 10px 0 10px 0;
+    border-bottom: 5px solid var(--ucjg-gold);
+    position: sticky;
+    top: 0;
+    z-index: 1;
+}
+
+.hero-section_membre_1 {
+    background: linear-gradient(135deg, rgba(13, 59, 102, 0.92), rgba(13, 59, 102, 0.85)), 
+                url("/ucjg_sodikoville.jpg") center/cover no-repeat;
+    color: var(--ucjg-white);
+    padding: 60px 0 40px 0;
+    border-bottom: 5px solid var(--ucjg-gold);
+    position: sticky;
+    top: 0;
+    z-index: 1;
+}
+
+
+.hero-section {
+    background: linear-gradient(135deg, rgba(13, 59, 102, 0.92), rgba(13, 59, 102, 0.85)), 
+                url("/ucjg_sodikoville.jpg") center/cover no-repeat;
+    color: var(--ucjg-white);
+    padding: 90px 0 70px 0;
+    border-bottom: 5px solid var(--ucjg-gold);
+    position: sticky;
+    top: 0;
+    z-index: 1;
+}
+
+/* On s'assure que la section suivante passe au-dessus */
+section.py-5 {
+    position: relative;
+    z-index: 2;
+    background-color: var(--ucjg-bg-light);
+}
+main.py-5 {
+    position: relative;
+    z-index: 2;
+    background-color: var(--ucjg-bg-light);
+}
+section.py-4.bg-light.border-bottom {
+    position: relative;
+    z-index: 2;
+    background-color: var(--ucjg-bg-light);
+}
+
+
+
+
+
+.hero-badge {
+    background-color: rgba(218, 165, 32, 0.2);
+    color: var(--ucjg-gold);
+    border: 1px solid var(--ucjg-gold);
+    border-radius: 30px;
+    padding: 6px 16px;
+    font-size: 0.85rem;
+    display: inline-block;
+}
+
+.hero-logo-img {
+    max-width: 280px;
+    width: 100%;
+    border-radius: 50%;
+    border: 5px solid var(--ucjg-gold);
+    background: #fff;
+    padding: 8px;
+}
+
+/* CARDS */
+.feature-card {
+    background: var(--ucjg-white);
+    border-radius: 16px;
+    padding: 25px 20px;
+    text-align: center;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.04);
+    transition: all 0.3s ease;
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
+    border-bottom: 3px solid var(--ucjg-gold);
+    border-top: 3px solid var(--ucjg-gold);
+}
+
+.feature-icon {
+    width: 60px;
+    height: 60px;
+    background-color: var(--ucjg-light-gold);
+    color: var(--ucjg-gold);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.6rem;
+    margin: 0 auto 15px auto;
+}
+
+/* FOOTER */
+footer {
+    background-color: var(--ucjg-blue);
+    color: var(--ucjg-white);
+    padding: 35px 0 20px 0;
+    border-top: 4px solid var(--ucjg-gold);
+}
+
+/* Style pour le lien actif de la navbar */
+.nav-link.active-link {
+    color: var(--ucjg-gold) !important;
+    font-weight: 700;
+    border-bottom: 2px solid var(--ucjg-gold);
+}
+
+/* Style des cartes cliquables */
+.feature-card-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    height: 100%;
+}
+
+.feature-card-link:hover .feature-card {
+    transform: translateY(-8px);
+    border-color: var(--ucjg-gold);
+    box-shadow: 0 12px 25px rgba(13, 59, 102, 0.15);
+}
+
+/* Animation et effet survol (hover) sur les cartes du programme quotidien */
+main .card {
+    transition: all 0.3s ease-in-out;
+    border: 2px solid transparent !important; /* Bordure transparente par défaut pour éviter le saut de mise en page */
+}
+
+main .card:hover {
+    border-color: var(--ucjg-gold) !important; /* Bordure dorée au survol de la souris */
+    box-shadow: 0 10px 25px rgba(218, 165, 32, 0.25) !important; /* Effet d'ombre dorée élégant */
+    transform: translateY(-4px); /* Léger soulèvement de la carte */
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+#piliers {
+    scroll-margin-top: 80px; /* Ajustez la valeur selon la hauteur de votre navbar */
+}
+#contexte {
+    scroll-margin-top: 80px; /* Ajustez la valeur selon la hauteur de votre navbar */
+}
+#justification {
+    scroll-margin-top: 80px; /* Ajustez la valeur selon la hauteur de votre navbar */
+}
+#theme {
+    scroll-margin-top: 80px; /* Ajustez la valeur selon la hauteur de votre navbar */
+}
+
+/* Bouton Retour en Haut de Page */
+.btn-back-to-top {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    width: 45px;
+    height: 45px;
+    background-color: var(--ucjg-blue);
+    color: var(--ucjg-gold);
+    border: 2px solid var(--ucjg-gold);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.8rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease-in-out;
+    text-decoration: none;
+}
+
+/* Apparition du bouton au scroll */
+.btn-back-to-top.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Effet au survol */
+.btn-back-to-top:hover {
+    background-color: var(--ucjg-gold);
+    color: var(--ucjg-blue);
+    border-color: var(--ucjg-blue);
+    transform: translateY(-4px);
+}
+
+/* Conteneur scrollable horizontalement pour les filtres */
+.filter-scroll-container {
+    overflow-x: auto;
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin; /* Pour Firefox */
+}
+
+/* Masquer/Adoucir la barre de défilement sur Chrome/Safari */
+.filter-scroll-container::-webkit-scrollbar {
+    height: 4px;
+}
+.filter-scroll-container::-webkit-scrollbar-thumb {
+    background: var(--ucjg-gold);
+    border-radius: 4px;
+}
+
+/* Boutons de filtre personnalisés */
+.btn-filter {
+    background-color: #ffffff;
+    color: var(--ucjg-blue);
+    border: 2px solid var(--ucjg-blue);
+    font-weight: 600;
+    padding: 8px 24px;
+    border-radius: 25px;
+    transition: all 0.3s ease;
+    flex-shrink: 0; /* Empêche les boutons de se compresser */
+}
+
+/* Effet au survol et état actif (sélectionné) */
+.btn-filter:hover,
+.btn-filter.active {
+    background-color: var(--ucjg-blue);
+    color: #ffffff;
+    border-color: var(--ucjg-blue);
+    box-shadow: 0 4px 10px rgba(13, 59, 102, 0.2);
+}
+
+.btn-filter[data-filter="Nouveau"].active {
+    background-color: var(--ucjg-blue);
+    border-color: var(--ucjg-blue);
+    color: #ffffff;
+}
+
+.btn-filter[data-filter="Ancien"].active {
+    background-color: var(--ucjg-gold);
+    border-color: var(--ucjg-gold);
+    color: #ffffff;
+}
+
+.btn-filter[data-filter="Partenaire"].active {
+    background-color: var(--ucjg-red);
+    border-color: var(--ucjg-red);
+    color: #ffffff;
+}
+
+.member-search-wrap {
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.members-search-input {
+    border: 1.5px solid rgba(13, 59, 102, 0.2);
+    border-radius: 999px;
+    padding: 0.9rem 1.25rem;
+    font-size: 0.98rem;
+    box-shadow: 0 6px 18px rgba(15, 23, 42, 0.06);
+}
+
+.members-search-input:focus {
+    border-color: var(--ucjg-blue);
+    box-shadow: 0 0 0 0.25rem rgba(13, 59, 102, 0.12);
+}
+
+.member-card-row {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 1.25rem;
+    overflow-x: auto;
+    padding: 0.5rem 0.25rem 1rem;
+    scroll-snap-type: x proximity;
+}
+
+.member-modal .modal-dialog {
+    max-height: 92vh;
+}
+
+.member-detail-header {
+    min-width: 0;
+}
+
+.member-detail-photo-wrap {
+    width: 250px;
+    height: 250px;
+    min-width: 250px;
+    border-radius: 1.5rem;
+    overflow: hidden;
+    border: 3px solid rgba(13, 59, 102, 0.18);
+    background: linear-gradient(135deg, rgba(13, 59, 102, 0.06), rgba(218, 165, 32, 0.08));
+    box-shadow: 0 10px 22px rgba(13, 59, 102, 0.12);
+}
+
+.member-detail-photo {
+    display: block;
+    width: 100%;
+    height: 100%;
+    /* object-fit: cover; */
+    object-fit: contain;
+    border-radius: 1.5rem;
+}
+
+.member-detail-meta {
+    min-width: 0;
+}
+
+.member-modal .modal-content {
+    border: 3px solid var(--ucjg-blue);
+    box-shadow: 0 20px 40px rgba(15, 23, 42, 0.12);
+}
+
+.member-modal .modal-dialog-scrollable .modal-body {
+    max-height: 72vh;
+    overflow-y: auto;
+}
+
+.member-modal.member-modal--nouveau .modal-content {
+    border-color: var(--ucjg-blue);
+}
+
+.member-modal.member-modal--ancien .modal-content {
+    border-color: var(--ucjg-gold);
+}
+
+.member-modal.member-modal--partenaire .modal-content {
+    border-color: var(--ucjg-red);
+}
+
+.member-modal.member-modal--default .modal-content {
+    border-color: var(--ucjg-blue);
+}
+
+.member-card-row::-webkit-scrollbar {
+    height: 8px;
+}
+
+.member-card-row::-webkit-scrollbar-thumb {
+    background: rgba(13, 59, 102, 0.25);
+    border-radius: 10px;
+}
+
+.member-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 240px;
+    max-width: 260px;
+    width: 240px;
+    background: #ffffff;
+    border: 2px solid #000000;
+    border-radius: 1.25rem;
+    overflow: hidden;
+    box-shadow: 0 8px 20px rgba(15, 23, 42, 0.08);
+    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+    scroll-snap-align: start;
+}
+
+.member-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 18px 30px rgba(15, 23, 42, 0.12);
+    border-color: #000000;
+}
+
+.member-card--nouveau {
+    border-color: var(--ucjg-blue);
+}
+
+.member-card--ancien {
+    border-color: var(--ucjg-gold);
+}
+
+.member-card--partenaire {
+    border-color: var(--ucjg-red);
+}
+
+.member-card__actions {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    z-index: 1;
+}
+
+.member-card__icon {
+    position: static;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    font-size: 1rem;
+    color: #ffffff;
+    box-shadow: 0 6px 15px rgba(15, 23, 42, 0.15);
+    border: none;
+}
+
+.member-card__icon--nouveau {
+    background: var(--ucjg-blue);
+}
+
+.member-card__icon--ancien {
+    background: var(--ucjg-gold);
+}
+
+.member-card__icon--partenaire {
+    background: var(--ucjg-red);
+}
+
+.member-card__icon--danger {
+    background: var(--ucjg-red);
+}
+
+.member-card__icon--danger:hover {
+    background: #8d0f0f;
+}
+
+.member-card__image {
+    width: 100%;
+    height: 230px;
+    object-fit: cover;
+    display: block;
+    background: linear-gradient(135deg, rgba(13, 59, 102, 0.08), rgba(218, 165, 32, 0.08));
+}
+
+.member-card__body {
+    padding: 1rem 1rem 1.1rem;
+    text-align: center;
+}
+
+.member-card__name {
+    margin: 0;
+    color: var(--ucjg-blue);
+    font-weight: 700;
+    font-size: 1.2rem;
+    min-height: 2.2rem;
+}
+
+.member-card__role {
+    margin: 0.45rem 0 1rem;
+    font-size: 0.8rem;
+    color: #6c757d;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+}
+
+.btn-member {
+    width: 100%;
+    border-radius: 999px;
+    padding: 0.7rem 1rem;
+    font-weight: 600;
+    border: none;
+    transition: all 0.2s ease;
+}
+
+.btn-member--nouveau {
+    background-color: var(--ucjg-blue);
+    color: #ffffff;
+}
+
+.btn-member--nouveau:hover {
+    background-color: #0a2a4d;
+    color: #ffffff;
+}
+
+.btn-member--ancien {
+    background-color: var(--ucjg-gold);
+    color: #ffffff;
+}
+
+.btn-member--ancien:hover {
+    background-color: #b88412;
+    color: #ffffff;
+}
+
+.btn-member--partenaire {
+    background-color: var(--ucjg-red);
+    color: #ffffff;
+}
+
+.btn-member--partenaire:hover {
+    background-color: #8d0f0f;
+    color: #ffffff;
+}
+
+.member-empty-state {
+    margin-top: 1rem;
+    text-align: center;
+    color: var(--ucjg-blue);
+    font-weight: 600;
+    background: rgba(13, 59, 102, 0.05);
+    border: 1px solid rgba(13, 59, 102, 0.12);
+    border-radius: 1rem;
+    padding: 1rem;
+}
+
+/* Palette de couleurs */
+:root {
+    --ucjg-blue: #0D3B66;
+    --ucjg-gold: #DAA520;
+    --ucjg-red: #ae1212;
+}
+
+/* Boutons d'action */
+.btn-ucjg-blue {
+    background-color: var(--ucjg-blue);
+    color: #ffffff;
+    border: none;
+    transition: all 0.3s ease;
+}
+.btn-ucjg-blue:hover {
+    background-color: #082643;
+    color: #ffffff;
+}
+
+.btn-ucjg-gold {
+    background-color: var(--ucjg-gold);
+    color: #ffffff;
+    border: none;
+    transition: all 0.3s ease;
+}
+.btn-ucjg-gold:hover {
+    background-color: #b8860b;
+    color: #ffffff;
+}
+
+.btn-ucjg-red {
+    background-color: var(--ucjg-red);
+    color: #ffffff;
+    border: none;
+    transition: all 0.3s ease;
+}
+.btn-ucjg-red:hover {
+    background-color: #830d0d;
+    color: #ffffff;
+}
+
+.btn-modal-confirm {
+    background-color: var(--ucjg-blue);
+    border: 1px solid var(--ucjg-blue);
+    color: #ffffff;
+    font-weight: 600;
+    border-radius: 0.8rem;
+    padding: 0.65rem 1.25rem;
+    transition: all 0.2s ease;
+}
+
+.btn-modal-confirm:hover {
+    background-color: #082b4f;
+    border-color: #082b4f;
+    color: #ffffff;
+}
+
+.btn-modal-close {
+    background-color: var(--ucjg-red);
+    border: 1px solid var(--ucjg-red);
+    color: #ffffff;
+    font-weight: 600;
+    border-radius: 0.8rem;
+    padding: 0.65rem 1.25rem;
+    transition: all 0.2s ease;
+}
+
+.btn-modal-close:hover {
+    background-color: #850d0d;
+    border-color: #850d0d;
+    color: #ffffff;
+}
+
+/* Effets sur les liens */
+.hover-gold:hover {
+    color: var(--ucjg-gold) !important;
+}
+
