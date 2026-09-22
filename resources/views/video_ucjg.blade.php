@@ -201,13 +201,13 @@
                                         <input type="text" class="form-control" name="identite" placeholder="Ex: Témoignage d'UCJG" required>
                                     </div>
                                     <div class="col-12">
-                                        <label class="form-label fw-semibold">Commentaire</label>
-                                        <textarea class="form-control" name="commentaire" rows="3" placeholder="Ajoutez un commentaire sur cette vidéo..."></textarea>
-                                    </div>
-                                    <div class="col-12">
                                         <label class="form-label fw-semibold">Vidéo</label>
                                         <input type="file" class="form-control" name="video" accept="video/*" capture="user" required>
                                         <small class="text-muted">Format vidéo accepté : MP4, WEBM, MOV, AVI. Durée maximum : 5 minutes.</small>
+                                    </div>
+                                    <div class="col-12">
+                                        <label class="form-label fw-semibold">Commentaire</label>
+                                        <textarea class="form-control" name="commentaire" rows="3" placeholder="Ajoutez un commentaire sur cette vidéo..."></textarea>
                                     </div>
                                 </div>
                             </div>
