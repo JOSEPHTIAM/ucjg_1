@@ -15,6 +15,7 @@
         <!-- Bootstrap CSS & Icons -->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/intl-tel-input@18.2.1/build/css/intlTelInput.css">
 
         <!-- Fichier CSS personnalisé -->
         <link rel="stylesheet" href="{{ asset('css/style.css') }}">
@@ -251,13 +252,6 @@
                                         <input type="file" class="form-control" name="photo" accept="image/*">
                                     </div>
                                     <div class="col-md-4">
-                                        <label class="form-label fw-semibold">Rôle</label>
-                                        <select class="form-select" name="role" required>
-                                            <option value="Utilisateur" {{ auth()->user()->role === 'Utilisateur' ? 'selected' : '' }}>Utilisateur</option>
-                                            <option value="Administrateur" {{ auth()->user()->role === 'Administrateur' ? 'selected' : '' }}>Administrateur</option>
-                                        </select>
-                                    </div>
-                                    <div class="col-md-4">
                                         <label class="form-label fw-semibold">Nom</label>
                                         <input type="text" class="form-control" name="nom" value="{{ auth()->user()->nom }}" required>
                                     </div>
@@ -291,9 +285,19 @@
                                             <option value="Non-genré" {{ auth()->user()->genre === 'Non-genré' ? 'selected' : '' }}>Non-genré</option>
                                         </select>
                                     </div>
+                                    @if(auth()->user()->role === 'Administrateur')
+                                        <div class="col-md-4">
+                                            <label class="form-label fw-semibold">Rôle</label>
+                                            <select class="form-select" name="role" required>
+                                                <option value="Utilisateur" {{ auth()->user()->role === 'Utilisateur' ? 'selected' : '' }}>Utilisateur</option>
+                                                <option value="Administrateur" {{ auth()->user()->role === 'Administrateur' ? 'selected' : '' }}>Administrateur</option>
+                                            </select>
+                                        </div>
+                                    @endif
                                     <div class="col-md-4">
                                         <label class="form-label fw-semibold">Indicatif pays</label>
-                                        <input type="text" class="form-control" name="indicatif_pays" value="{{ auth()->user()->indicatif_pays }}" required>
+                                        <input type="tel" class="form-control country-phone-input" value="{{ auth()->user()->indicatif_pays }}" data-country-value="{{ auth()->user()->indicatif_pays }}" required>
+                                        <input type="hidden" name="indicatif_pays" value="{{ auth()->user()->indicatif_pays }}">
                                     </div>
                                     <div class="col-md-4">
                                         <label class="form-label fw-semibold">Contact</label>
@@ -408,7 +412,8 @@
 
                                         <div class="col-md-6">
                                             <label class="form-label fw-semibold">Indicatif pays *</label>
-                                            <input type="text" name="indicatif_pays" class="form-control" required>
+                                            <input type="tel" class="form-control country-phone-input" required>
+                                            <input type="hidden" name="indicatif_pays" value="">
                                         </div>
 
                                         <div class="col-md-6">
@@ -506,6 +511,7 @@
         @include('structure.footer')
 
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/intl-tel-input@18.2.1/build/js/intlTelInput.min.js"></script>
         <script src="{{ asset('js/main.js') }}"></script>
     </body>
 </html>

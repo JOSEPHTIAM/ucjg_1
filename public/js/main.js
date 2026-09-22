@@ -54,7 +54,48 @@ document.addEventListener('DOMContentLoaded', function () {
     console.log('Application UCJG Sodiko-Ville chargée avec succès !');
 });
 
+function initCountryPhoneInputs() {
+    const fields = document.querySelectorAll('.country-phone-input');
+
+    fields.forEach((field) => {
+        const hiddenField = field.closest('form')?.querySelector('input[name="indicatif_pays"]') || field.nextElementSibling;
+        const currentValue = hiddenField ? hiddenField.value || field.dataset.countryValue || '' : field.dataset.countryValue || '';
+
+        if (!field.dataset.intlInitialized) {
+            const iti = window.intlTelInput(field, {
+                initialCountry: 'cm',
+                preferredCountries: ['cm', 'fr', 'us', 'gb', 'ca', 'be', 'sn', 'ci', 'ga', 'cg'],
+                separateDialCode: false,
+                utilsScript: 'https://cdn.jsdelivr.net/npm/intl-tel-input@18.2.1/build/js/utils.js'
+            });
+
+            field.dataset.intlInitialized = 'true';
+            field._iti = iti;
+
+            if (currentValue && currentValue.startsWith('+')) {
+                const dialCode = currentValue.replace(/\D/g, '');
+                const country = window.intlTelInputGlobals?.getCountryData?.().find(item => item.dialCode === dialCode) || null;
+                if (country) {
+                    iti.setCountry(country.iso2);
+                }
+            }
+
+            field.addEventListener('countrychange', function () {
+                const selectedCountry = iti.getSelectedCountryData();
+                if (hiddenField) {
+                    hiddenField.value = selectedCountry && selectedCountry.dialCode ? '+' + selectedCountry.dialCode : '';
+                }
+            });
+
+            if (hiddenField && currentValue && currentValue.startsWith('+')) {
+                hiddenField.value = currentValue;
+            }
+        }
+    });
+}
+
 document.addEventListener('DOMContentLoaded', function () {
+    initCountryPhoneInputs();
     const backToTopBtn = document.getElementById('backToTop');
 
     if (backToTopBtn) {
@@ -230,10 +271,10 @@ document.addEventListener('DOMContentLoaded', function () {
             }
 
             const fields = {
-                role: this.dataset.userRole || 'Utilisateur',
                 nom: this.dataset.userName || '',
                 prenom: this.dataset.userPrenom || '',
                 membre: this.dataset.userMembre || 'Nouveau',
+                role: this.dataset.userRole || 'Utilisateur',
                 voix: this.dataset.userVoix || 'Sopra',
                 genre: this.dataset.userGenre || 'Homme',
                 indicatif_pays: this.dataset.userPays || '',
@@ -259,6 +300,21 @@ document.addEventListener('DOMContentLoaded', function () {
                         }
                     }
                 });
+
+                const visibleCountryInput = form.querySelector('.country-phone-input');
+                const hiddenCountryInput = form.querySelector('input[name="indicatif_pays"]');
+                if (visibleCountryInput && hiddenCountryInput) {
+                    const countryValue = fields.indicatif_pays || hiddenCountryInput.value || '';
+                    hiddenCountryInput.value = countryValue;
+                    visibleCountryInput.dataset.countryValue = countryValue;
+                    if (visibleCountryInput._iti) {
+                        const dialCode = countryValue.replace(/\D/g, '');
+                        const country = window.intlTelInputGlobals?.getCountryData?.().find(item => item.dialCode === dialCode) || null;
+                        if (country) {
+                            visibleCountryInput._iti.setCountry(country.iso2);
+                        }
+                    }
+                }
             }
 
             applyMemberModalTheme(editModal, fields.membre || editModal.dataset.memberCategory || 'Nouveau');

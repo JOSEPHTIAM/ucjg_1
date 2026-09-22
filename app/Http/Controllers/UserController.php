@@ -47,7 +47,7 @@ class UserController extends Controller
 
         $user = User::create([
             'photo' => $photoPath,
-            'role' => $request->role,
+            'role' => $request->role ?? 'Utilisateur',
             'nom' => $request->nom,
             'prenom' => $request->prenom,
             'membre' => $request->membre,
@@ -138,9 +138,8 @@ class UserController extends Controller
     {
         abort_unless(Auth::check() && (Auth::id() === $user->id || Auth::user()->role === 'Administrateur'), 403);
 
-        $validated = $request->validate([
+        $rules = [
             'photo' => ['nullable', 'image', 'mimes:jpeg,png,jpg', 'max:2048'],
-            'role' => ['required', 'in:Utilisateur,Administrateur'],
             'nom' => ['required', 'string', 'max:255'],
             'prenom' => ['nullable', 'string', 'max:255'],
             'membre' => ['required', 'in:Ancien,Nouveau,Partenaire'],
@@ -154,10 +153,20 @@ class UserController extends Controller
             'anecdote' => ['nullable', 'string'],
             'releve_assuree' => ['required', 'in:Oui,Non'],
             'souhait_30_ans' => ['required', 'string'],
-        ]);
+        ];
+
+        if (Auth::user()->role === 'Administrateur') {
+            $rules['role'] = ['required', 'in:Utilisateur,Administrateur'];
+        }
+
+        $validated = $request->validate($rules);
 
         if ($request->hasFile('photo')) {
             $validated['photo'] = $request->file('photo')->store('photos_users', 'public');
+        }
+
+        if (Auth::user()->role === 'Administrateur' && $request->filled('role')) {
+            $validated['role'] = $request->role;
         }
 
         $user->fill($validated);

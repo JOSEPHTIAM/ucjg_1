@@ -50,7 +50,7 @@
                                             <label class="form-label fw-semibold">Rôle *</label>
                                             <select name="role" class="form-select" required>
                                                 <option value="Utilisateur" selected>Utilisateur</option>
-                                                <option value="Administrateur">Administrateur</option>
+                                                <!-- <option value="Administrateur">Administrateur</option> -->
                                             </select>
                                         </div>
 
