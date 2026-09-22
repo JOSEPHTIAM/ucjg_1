@@ -114,6 +114,7 @@
                             data-user-profession="{{ e($user->profession) }}"
                             data-user-email="{{ e($user->email) }}"
                             data-user-annee="{{ e($user->premiere_annee_ucjg) }}"
+                            data-user-created="{{ $user->created_at ? $user->created_at->format('d/m/Y H:i') : '' }}"
                             data-user-anecdote="{{ e($user->anecdote ?? 'Aucune') }}"
                             data-user-releve="{{ e($user->releve_assuree) }}"
                             data-user-souhait="{{ e($user->souhait_30_ans) }}"
@@ -213,6 +214,9 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="detail-field"><span>Première année UCJG: </span><strong id="detailAnnee"></strong></div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="detail-field"><span>Date de création: </span><strong id="detailCreatedAt"></strong></div>
                             </div>
                             <div class="col-md-6">
                                 <div class="detail-field"><span>Relevé assuré: </span><strong id="detailReleve"></strong></div>

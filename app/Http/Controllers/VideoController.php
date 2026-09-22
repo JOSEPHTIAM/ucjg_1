@@ -24,6 +24,7 @@ class VideoController extends Controller
 
         $validated = $request->validate([
             'identite' => ['required', 'string', 'max:255'],
+            'commentaire' => ['nullable', 'string', 'max:2000'],
             'video' => ['required', 'file', 'mimetypes:video/mp4,video/quicktime,video/webm,video/x-msvideo', 'max:51200'],
         ]);
 
@@ -32,6 +33,7 @@ class VideoController extends Controller
         Video::create([
             'video' => $path,
             'identite' => $validated['identite'],
+            'commentaire' => $validated['commentaire'] ?? null,
             'user_id' => Auth::id(),
         ]);
 
@@ -44,11 +46,16 @@ class VideoController extends Controller
 
         $validated = $request->validate([
             'identite' => ['required', 'string', 'max:255'],
+            'commentaire' => ['nullable', 'string', 'max:2000'],
             'video' => ['nullable', 'file', 'mimetypes:video/mp4,video/quicktime,video/webm,video/x-msvideo', 'max:51200'],
         ]);
 
         if ($request->hasFile('video')) {
             $validated['video'] = $request->file('video')->store('videos_ucjg', 'public');
+        }
+
+        if ($request->has('commentaire')) {
+            $validated['commentaire'] = $request->commentaire;
         }
 
         $video->update($validated);

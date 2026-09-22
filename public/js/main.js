@@ -177,6 +177,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const detailProfession = document.getElementById('detailProfession');
     const detailEmail = document.getElementById('detailEmail');
     const detailAnnee = document.getElementById('detailAnnee');
+    const detailCreatedAt = document.getElementById('detailCreatedAt');
     const detailReleve = document.getElementById('detailReleve');
     const detailAnecdote = document.getElementById('detailAnecdote');
     const detailSouhait = document.getElementById('detailSouhait');
@@ -210,6 +211,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 profession: card.dataset.userProfession || '',
                 email: card.dataset.userEmail || '',
                 annee: card.dataset.userAnnee || '',
+                createdAt: card.dataset.userCreated || '',
                 anecdote: card.dataset.userAnecdote || 'Aucune',
                 releve: card.dataset.userReleve || '',
                 souhait: card.dataset.userSouhait || '',
@@ -237,6 +239,7 @@ document.addEventListener('DOMContentLoaded', function () {
             if (detailProfession) detailProfession.textContent = member.profession || '—';
             if (detailEmail) detailEmail.textContent = member.email || '—';
             if (detailAnnee) detailAnnee.textContent = member.annee || '—';
+            if (detailCreatedAt) detailCreatedAt.textContent = member.createdAt || '—';
             if (detailReleve) detailReleve.textContent = member.releve || '—';
             if (detailAnecdote) detailAnecdote.textContent = member.anecdote || 'Aucune';
             if (detailSouhait) detailSouhait.textContent = member.souhait || '—';

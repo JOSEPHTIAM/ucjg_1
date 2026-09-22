@@ -83,6 +83,7 @@
                             data-search="{{ strtolower($searchableText) }}"
                             data-video-id="{{ $video->id_video }}"
                             data-video-identite="{{ e($video->identite) }}"
+                            data-video-commentaire="{{ e($video->commentaire ?? '') }}"
                             data-video-url="{{ $videoUrl }}"
                             data-video-user-name="{{ e($personName) }}"
                             data-video-user-member="{{ e($video->user?->membre ?? 'Inconnu') }}"
@@ -163,10 +164,7 @@
                                 <div class="detail-field"><span>Identité de la vidéo: </span><strong id="videoDetailIdentity"></strong></div>
                             </div>
                             <div class="col-md-6">
-                                <div class="detail-field"><span>ID de la vidéo: </span><strong id="videoDetailId"></strong></div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="detail-field"><span>Nom & prénom: </span><strong id="videoDetailUserName"></strong></div>
+                                <div class="detail-field"><span>Noms et prénoms: </span><strong id="videoDetailUserName"></strong></div>
                             </div>
                             <div class="col-md-6">
                                 <div class="detail-field"><span>Membre: </span><strong id="videoDetailUserMember"></strong></div>
@@ -203,6 +201,10 @@
                                         <input type="text" class="form-control" name="identite" placeholder="Ex: Témoignage d'UCJG" required>
                                     </div>
                                     <div class="col-12">
+                                        <label class="form-label fw-semibold">Commentaire</label>
+                                        <textarea class="form-control" name="commentaire" rows="3" placeholder="Ajoutez un commentaire sur cette vidéo..."></textarea>
+                                    </div>
+                                    <div class="col-12">
                                         <label class="form-label fw-semibold">Vidéo</label>
                                         <input type="file" class="form-control" name="video" accept="video/*" capture="user" required>
                                         <small class="text-muted">Format vidéo accepté : MP4, WEBM, MOV, AVI. Durée maximum : 5 minutes.</small>
@@ -235,6 +237,10 @@
                                     <div class="col-12">
                                         <label class="form-label fw-semibold">Nom de la vidéo</label>
                                         <input type="text" class="form-control" id="editVideoIdentity" name="identite" required>
+                                    </div>
+                                    <div class="col-12">
+                                        <label class="form-label fw-semibold">Commentaire</label>
+                                        <textarea class="form-control" id="editVideoCommentaire" name="commentaire" rows="3" placeholder="Modifiez ou ajoutez un commentaire..."></textarea>
                                     </div>
                                     <div class="col-12">
                                         <label class="form-label fw-semibold">Nouvelle vidéo</label>
@@ -292,6 +298,7 @@
                 const videoDetailUserName = document.getElementById('videoDetailUserName');
                 const videoDetailUserMember = document.getElementById('videoDetailUserMember');
                 const videoDetailDate = document.getElementById('videoDetailDate');
+                const videoDetailComment = document.getElementById('videoDetailComment');
                 const videoDetailPlayer = document.getElementById('videoDetailPlayer');
                 const deleteVideoForm = document.getElementById('deleteVideoForm');
                 const deleteVideoName = document.getElementById('deleteVideoName');
@@ -317,6 +324,7 @@
                         const userName = card.dataset.videoUserName || 'Utilisateur inconnu';
                         const userMember = card.dataset.videoUserMember || '—';
                         const createdAt = card.dataset.videoCreated || '—';
+                        const commentaire = card.dataset.videoCommentaire || 'Aucun commentaire';
 
                         if (videoDetailTitle) videoDetailTitle.textContent = videoIdentite;
                         if (videoDetailIdentity) videoDetailIdentity.textContent = videoIdentite;
@@ -324,6 +332,7 @@
                         if (videoDetailUserName) videoDetailUserName.textContent = userName;
                         if (videoDetailUserMember) videoDetailUserMember.textContent = userMember;
                         if (videoDetailDate) videoDetailDate.textContent = createdAt;
+                        if (videoDetailComment) videoDetailComment.textContent = commentaire;
                         if (videoDetailPlayer) {
                             videoDetailPlayer.src = videoUrl;
                             videoDetailPlayer.load();
@@ -344,10 +353,15 @@
                         if (!card) return;
 
                         const identityInput = document.getElementById('editVideoIdentity');
+                        const commentaireInput = document.getElementById('editVideoCommentaire');
                         const form = document.getElementById('editVideoForm');
 
                         if (identityInput) {
                             identityInput.value = card.dataset.videoIdentite || '';
+                        }
+
+                        if (commentaireInput) {
+                            commentaireInput.value = card.dataset.videoCommentaire || '';
                         }
 
                         if (form) {

@@ -15,6 +15,7 @@ class Video extends Model
     protected $fillable = [
         'video',
         'identite',
+        'commentaire',
         'user_id',
     ];
 
